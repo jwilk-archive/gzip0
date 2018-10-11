@@ -11,6 +11,8 @@ import tempfile
 def main():
     ap = argparse.ArgumentParser(usage='%(prog)s < INPUT > OUTPUT')
     ap.parse_args()
+    if sys.stdout.isatty():
+        ap.error('stdout is a tty')
     s = sys.stdin.buffer.read()
     with tempfile.NamedTemporaryFile() as file:
         with gzip.GzipFile('', 'wb', compresslevel=0, fileobj=file, mtime=0) as gzfile:
