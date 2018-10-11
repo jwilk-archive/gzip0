@@ -1,0 +1,14 @@
+.. code:: console
+
+   $ echo 'See? Not compressed!' | gzip0 > test.gz
+
+   $ file test.gz
+   test.gz: gzip compressed data, max compression, original size 21
+
+   $ gzip -dc < test.gz
+   See? Not compressed!
+
+   $ strings test.gz
+   See? Not compressed!
+
+.. vim:ft=rst ts=3 sts=3 sw=3 et
